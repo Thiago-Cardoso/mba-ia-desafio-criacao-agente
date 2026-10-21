@@ -1,3 +1,18 @@
+# Segredos e configuração local
 .env
+
+# Ambiente Python e caches
 .venv/
 __pycache__/
+.pytest_cache/
+*.py[cod]
+*.egg-info/
+
+# Arquivos locais do macOS
+.DS_Store
+
+# Bancos SQLite e arquivos de runtime
+data/*.db
+data/*.db-shm
+data/*.db-wal
+data/*.lock
