@@ -1,0 +1,33 @@
+
+  [project]
+  name = "residencial-aurora"
+  version = "0.1.0"
+  description = "Assistente virtual do Residencial Aurora — desafio 'Regra é regra' (Google ADK + FastAPI)"
+  requires-python = ">=3.12"
+  dependencies = [
+      "google-adk[db]==2.12.0",
+      # fastapi==0.141.0 é a última versão sem a dependência obrigatória
+      # opentelemetry-api>=1.44.0, incompatível com o teto de google-adk 2.12.0
+      # (opentelemetry-api<=1.42.1). Verificado no PyPI em 2026-10-18.
+      "fastapi==0.141.0",
+      "uvicorn==0.54.0",
+      "python-dotenv==1.2.4",
+  ]
+
+  [project.optional-dependencies]
+  test = [
+      "pytest==9.1.1",
+      "httpx==0.28.1",
+  ]
+
+  [tool.pytest.ini_options]
+  markers = [
+      "gemini_real: testes que fazem chamadas reais ao Google Gemini (T09); exigem GOOGLE_API_KEY.",
+  ]
+
+  [build-system]
+  requires = ["setuptools>=68"]
+  build-backend = "setuptools.build_meta"
+
+  [tool.setuptools.packages.find]
+  where = ["src"]
